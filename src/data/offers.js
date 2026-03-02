@@ -6,7 +6,7 @@ export function expiresOn(days) {
 
 export const stats = [
   { label: 'Active Offers', value: '23', icon: '🎁' },
-  { label: 'Total Value', value: '$8,450+', icon: '💰' },
+  { label: 'Total Value', value: '$8,520+', icon: '💰' },
   { label: 'Countries', value: '50+', icon: '🌍' },
   { label: 'Happy Users', value: '1M+', icon: '👥' },
 ];
@@ -83,5 +83,46 @@ export const offers = [
     isFeatured: true,
     tags: ["Crypto", "Bonus", "Worldwide"],
     link: "https://coinbase.com/join/D8SQRTE?src=ios-link"
+  },
+  {
+    id: 4,
+    company: "Revolut",
+    logo: "https://cdn.simpleicons.org/revolut/0075eb",
+    emoji: "💳",
+    bonus: "30€",
+    bonusNote: "Cash Reward",
+    category: "finance",
+    description: "Create and verify account, add money, make 3 purchases (min. 5€ each), and request a physical card.",
+    countries: ["🇪🇺"],
+    countryNames: ["Europe"],
+    steps: 3,
+    spots: null,
+    expiry: "2026-03-10",
+    rating: 4.8,
+    reviews: 28500,
+    isHot: true,
+    isFeatured: true,
+    tags: ["Finance", "Bonus", "Europe"],
+    link: "https://revolut.com/referral/?referral-code=josp7epe!FEB2-26-AR-L2&geo-redirect"
+  },
+  {
+    id: 5,
+    company: "OKX",
+    logo: "https://cdn.simpleicons.org/okx/ffffff",
+    emoji: "₿",
+    bonus: "100€",
+    bonusNote: "Up to Reward",
+    category: "crypto",
+    description: "Deposit 200€ or more and buy 200€ or more in crypto to get a reward of up to 100€.",
+    countries: ["🇪🇺"],
+    countryNames: ["Europe"],
+    steps: 2,
+    spots: 10,
+    rating: 4.8,
+    reviews: 18200,
+    isHot: true,
+    isFeatured: true,
+    tags: ["Crypto", "Bonus", "Europe"],
+    link: "https://my.okx.com/en-eu/join/30873897"
   }
 ];

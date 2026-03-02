@@ -4,7 +4,16 @@ import { offers } from '../data/offers';
 import OfferCard from './OfferCard';
 import './BestOffers.css';
 
-const featured = offers.filter((o) => o.isFeatured);
+// Helper to extract numerical value from bonus string (supports $ and €)
+const getBonusValue = (bonus) => {
+    const match = bonus.match(/(\d+)(?:\$|€)/) || bonus.match(/(?:\$|€)(\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+};
+
+// Sort all offers by bonus value descending and pick top 6
+const featured = [...offers]
+    .sort((a, b) => getBonusValue(b.bonus) - getBonusValue(a.bonus))
+    .slice(0, 6);
 
 export default function BestOffers() {
     const trackRef = useRef(null);

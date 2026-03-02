@@ -48,11 +48,12 @@ export default function Hero() {
         };
     }, []);
 
-    // Sum up all bonuses starting with '$'
+    // Sum up all bonuses starting with '$' or containing '€'
     const totalValue = offers.reduce((acc, offer) => {
-        const match = offer.bonus.match(/\$(\d+)/);
+        const match = offer.bonus.match(/(\d+)(?:\$|€)/) || offer.bonus.match(/(?:\$|€)(\d+)/);
         if (match) {
-            return acc + parseInt(match[1], 10);
+            const value = parseInt(match[1], 10);
+            return acc + value;
         }
         return acc;
     }, 0);
