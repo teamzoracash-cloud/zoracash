@@ -1,0 +1,71 @@
+.best-offers {
+    background: var(--bg-secondary);
+    position: relative;
+}
+
+.best-offers-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-xl);
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+}
+
+.best-offers-controls {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.best-offers-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    line-height: 1;
+}
+
+.best-offers-arrow:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: scale(1.05);
+}
+
+.best-offers-track {
+    display: flex;
+    gap: var(--spacing-lg);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-md);
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+}
+
+.best-offers-item {
+    min-width: 340px;
+    max-width: 340px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+.best-offers-viewall {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+    .best-offers-item {
+        min-width: 290px;
+        max-width: 290px;
+    }
+}

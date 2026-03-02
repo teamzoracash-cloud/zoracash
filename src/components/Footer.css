@@ -1,0 +1,144 @@
+.footer {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    padding: var(--spacing-2xl) 0 var(--spacing-xl);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-logo-icon {
+    font-size: 22px;
+    filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.6));
+}
+
+.footer-logo-text {
+    font-family: 'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+}
+
+.footer-logo-text span {
+    color: var(--accent-primary);
+}
+
+.footer-tagline {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 280px;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 8px;
+}
+
+.footer-social-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.footer-social-btn:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.footer-group-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-group-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-link {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footer-link:hover {
+    color: var(--text-primary);
+}
+
+.footer-divider {
+    height: 1px;
+    background: var(--border);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.footer-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.footer-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-xl);
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+}
