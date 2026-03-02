@@ -165,7 +165,15 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
                 <div className="offer-card-header">
                     <div className="offer-card-logo" style={{ borderColor: colorSet.border }}>
                         {offer.logo ? (
-                            <img src={offer.logo} alt={offer.company} className="offer-card-logo-img" />
+                            <img
+                                src={offer.logo}
+                                alt={offer.company}
+                                className="offer-card-logo-img"
+                                onError={(e) => {
+                                    e.target.style.display = 'none';
+                                    e.target.parentElement.innerHTML = `<span class="offer-card-emoji">${offer.emoji}</span>`;
+                                }}
+                            />
                         ) : (
                             <span className="offer-card-emoji">{offer.emoji}</span>
                         )}
