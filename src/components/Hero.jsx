@@ -154,7 +154,7 @@ export default function Hero() {
                                     {s.value}
                                     {s.label === 'Happy Users' && (
                                         <span style={{ fontSize: '0.6rem', marginLeft: '6px', verticalAlign: 'middle', color: '#10b981', fontWeight: 'bold' }}>
-                                            ● LIVE
+                                            ● LIVE (Public Sync Test)
                                         </span>
                                     )}
                                 </span>
