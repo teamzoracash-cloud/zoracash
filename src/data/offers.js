@@ -60,6 +60,7 @@ export const offers = [
     reviews: 5800,
     isHot: true,
     isFeatured: true,
+    // Live update trigger
     tags: ["Cashback", "Card", "20% Discount"],
     link: "https://go.kast.xyz/VqVO/IXRGELP6"
   },
