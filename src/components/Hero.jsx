@@ -152,11 +152,6 @@ export default function Hero() {
                                 <span className="hero-stat-icon">{s.icon}</span>
                                 <span className="hero-stat-value">
                                     {s.value}
-                                    {s.label === 'Happy Users' && (
-                                        <span style={{ fontSize: '0.6rem', marginLeft: '6px', verticalAlign: 'middle', color: '#10b981', fontWeight: 'bold' }}>
-                                            ● LIVE (Public Sync Test)
-                                        </span>
-                                    )}
                                 </span>
                                 <span className="hero-stat-label">{s.label}</span>
                             </motion.div>
