@@ -150,7 +150,14 @@ export default function Hero() {
                                 transition={{ delay: 0.7 + i * 0.08 }}
                             >
                                 <span className="hero-stat-icon">{s.icon}</span>
-                                <span className="hero-stat-value">{s.value}</span>
+                                <span className="hero-stat-value">
+                                    {s.value}
+                                    {s.label === 'Happy Users' && (
+                                        <span style={{ fontSize: '0.6rem', marginLeft: '4px', verticalAlign: 'middle', color: '#10b981', fontWeight: 'bold' }}>
+                                            • LIVE
+                                        </span>
+                                    )}
+                                </span>
                                 <span className="hero-stat-label">{s.label}</span>
                             </motion.div>
                         ))}
