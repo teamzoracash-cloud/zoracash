@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaStar } from 'react-icons/fa';
+import { supabase } from '../supabase';
 import './OfferCard.css';
 
 // Compute days remaining from an ISO date string ('YYYY-MM-DD')
@@ -30,21 +31,90 @@ const categoryColors = {
 
 const MAX_FLAGS = 5;
 
+// Generate or get a simple device ID
+const getDeviceId = () => {
+    let id = localStorage.getItem('zora_device_id');
+    if (!id) {
+        id = 'dev_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('zora_device_id', id);
+    }
+    return id;
+};
+
 export default function OfferCard({ offer, featured = false, index = 0 }) {
     const [userRating, setUserRating] = useState(0);
     const [hover, setHover] = useState(0);
-    // Real community stats (simulated with local state for now)
-    const [communityStats, setCommunityStats] = useState({
-        totalScore: 0,
-        count: 0
-    });
+    const [communityStats, setCommunityStats] = useState({ totalScore: 0, count: 0 });
+    const deviceId = getDeviceId();
 
-    const handleRate = (value) => {
-        setUserRating(value);
-        setCommunityStats(prev => ({
-            totalScore: prev.totalScore + value,
-            count: prev.count + 1
-        }));
+    // Fetch ratings from Supabase
+    const fetchRatings = async () => {
+        try {
+            // Get total aggregate
+            const { data: allRatings, error: fetchError } = await supabase
+                .from('ratings')
+                .select('rating')
+                .eq('offer_id', offer.id);
+
+            if (fetchError) throw fetchError;
+
+            if (allRatings) {
+                const totalScore = allRatings.reduce((acc, curr) => acc + curr.rating, 0);
+                setCommunityStats({
+                    totalScore,
+                    count: allRatings.length
+                });
+            }
+
+            // Get current user's rating
+            const { data: myRating, error: myError } = await supabase
+                .from('ratings')
+                .select('rating')
+                .eq('offer_id', offer.id)
+                .eq('user_id', deviceId)
+                .single();
+
+            if (myRating) setUserRating(myRating.rating);
+        } catch (err) {
+            console.error('Error fetching ratings:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchRatings();
+
+        // Optional: Real-time subscription
+        const channel = supabase
+            .channel(`public:ratings:offer_id=eq.${offer.id}`)
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'ratings', filter: `offer_id=eq.${offer.id}` }, () => {
+                fetchRatings();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, [offer.id]);
+
+    const handleRate = async (value) => {
+        const previousRating = userRating;
+        setUserRating(value); // Optimistic update
+
+        try {
+            const { error } = await supabase
+                .from('ratings')
+                .upsert({
+                    offer_id: offer.id,
+                    user_id: deviceId,
+                    rating: value
+                }, { onConflict: 'offer_id,user_id' });
+
+            if (error) throw error;
+            fetchRatings(); // Refresh totals
+        } catch (err) {
+            console.error('Error saving rating:', err);
+            setUserRating(previousRating); // Rollback
+        }
     };
 
     const communityAverage = communityStats.count > 0
