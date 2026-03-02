@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { stats, offers } from '../data/offers';
+import { supabase } from '../supabase';
 import './Hero.css';
 
 const ParticleOrb = ({ style }) => (
@@ -7,7 +9,44 @@ const ParticleOrb = ({ style }) => (
 );
 
 export default function Hero() {
+    const [happyUsersCount, setHappyUsersCount] = useState(0);
     const activeOffersCount = offers.length;
+
+    // Fetch happy users from Supabase
+    useEffect(() => {
+        const fetchHappyUsers = async () => {
+            try {
+                // Count unique user_ids where rating >= 3
+                const { data, error } = await supabase
+                    .from('ratings')
+                    .select('user_id')
+                    .gte('rating', 3);
+
+                if (error) throw error;
+
+                if (data) {
+                    // Count ALL 3+ star reviews (not just unique users)
+                    setHappyUsersCount(data.length);
+                }
+            } catch (err) {
+                console.error('Error fetching happy users:', err);
+            }
+        };
+
+        fetchHappyUsers();
+
+        // Subscribe to changes to keep it updated real-time
+        const channel = supabase
+            .channel('public:ratings:happy_users')
+            .on('postgres_changes', { event: '*', schema: 'public', table: 'ratings' }, () => {
+                fetchHappyUsers();
+            })
+            .subscribe();
+
+        return () => {
+            supabase.removeChannel(channel);
+        };
+    }, []);
 
     // Sum up all bonuses starting with '$'
     const totalValue = offers.reduce((acc, offer) => {
@@ -21,7 +60,8 @@ export default function Hero() {
     const dynamicStats = [
         { label: 'Active Offers', value: activeOffersCount.toString(), icon: '🎁' },
         { label: 'Total Value', value: `$${totalValue.toLocaleString()}+`, icon: '💰' },
-        ...stats.slice(2)
+        { label: 'Countries', value: stats[2].value, icon: stats[2].icon },
+        { label: 'Happy Users', value: `${happyUsersCount.toLocaleString()}+`, icon: '👥' }
     ];
 
     return (
