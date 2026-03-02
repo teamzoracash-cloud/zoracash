@@ -62,5 +62,25 @@ export const offers = [
     isFeatured: true,
     tags: ["Cashback", "Card", "20% Discount"],
     link: "https://go.kast.xyz/VqVO/IXRGELP6"
+  },
+  {
+    id: 3,
+    company: "Coinbase",
+    logo: "https://cdn.simpleicons.org/coinbase/0066FF",
+    emoji: "🪙",
+    bonus: "$10",
+    bonusNote: "In Crypto",
+    category: "crypto",
+    description: "Deposit $10 to earn $10 in free crypto. Available worldwide.",
+    countries: ["🌍"],
+    countryNames: ["Worldwide"],
+    steps: 1,
+    spots: null,
+    rating: 4.8,
+    reviews: 12500,
+    isHot: true,
+    isFeatured: false,
+    tags: ["Crypto", "Bonus", "Worldwide"],
+    link: "https://coinbase.com/join/D8SQRTE?src=ios-link"
   }
 ];

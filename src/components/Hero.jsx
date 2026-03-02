@@ -153,8 +153,8 @@ export default function Hero() {
                                 <span className="hero-stat-value">
                                     {s.value}
                                     {s.label === 'Happy Users' && (
-                                        <span style={{ fontSize: '0.6rem', marginLeft: '4px', verticalAlign: 'middle', color: '#10b981', fontWeight: 'bold' }}>
-                                            • LIVE
+                                        <span style={{ fontSize: '0.6rem', marginLeft: '6px', verticalAlign: 'middle', color: '#10b981', fontWeight: 'bold' }}>
+                                            ● LIVE
                                         </span>
                                     )}
                                 </span>
