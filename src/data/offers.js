@@ -75,11 +75,11 @@ export const offers = [
     countries: ["🌍"],
     countryNames: ["Worldwide"],
     steps: 1,
-    spots: null,
+    spots: 10,
     rating: 4.8,
     reviews: 12500,
     isHot: true,
-    isFeatured: false,
+    isFeatured: true,
     tags: ["Crypto", "Bonus", "Worldwide"],
     link: "https://coinbase.com/join/D8SQRTE?src=ios-link"
   }
