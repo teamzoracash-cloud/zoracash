@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { FaStar } from 'react-icons/fa';
 import './OfferCard.css';
 
 // Compute days remaining from an ISO date string ('YYYY-MM-DD')
@@ -29,9 +31,11 @@ const categoryColors = {
 const MAX_FLAGS = 5;
 
 export default function OfferCard({ offer, featured = false, index = 0 }) {
+    const [rating, setRating] = useState(0);
+    const [hover, setHover] = useState(0);
+
     const colorSet = categoryColors[offer.category] || categoryColors.finance;
     const extraCountries = offer.countries.length - MAX_FLAGS;
-    const stars = Math.round(offer.rating);
 
     const isSpots = offer.spots !== undefined && offer.spots !== null;
     const days = isSpots ? null : daysLeft(offer.expiry);
@@ -85,8 +89,31 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
                             )}
                         </div>
                         <div className="offer-card-rating">
-                            <span className="star-icon">★</span>
-                            <span className="rating-score">{offer.rating}</span>
+                            <div className="star-rating-interactive">
+                                {[...Array(5)].map((_, i) => {
+                                    const ratingValue = i + 1;
+                                    return (
+                                        <label key={i}>
+                                            <input
+                                                type="radio"
+                                                name="rating"
+                                                value={ratingValue}
+                                                onClick={() => setRating(ratingValue)}
+                                                style={{ display: 'none' }}
+                                            />
+                                            <FaStar
+                                                className="star"
+                                                color={ratingValue <= (hover || rating || offer.rating) ? "#F59E0B" : "rgba(255,255,255,0.1)"}
+                                                size={16}
+                                                onMouseEnter={() => setHover(ratingValue)}
+                                                onMouseLeave={() => setHover(0)}
+                                                style={{ cursor: 'pointer', transition: 'color 200ms, transform 200ms' }}
+                                            />
+                                        </label>
+                                    );
+                                })}
+                            </div>
+                            <span className="rating-score">{rating || offer.rating}</span>
                             <span className="rating-reviews">({(offer.reviews / 1000).toFixed(1)}k reviews)</span>
                         </div>
                     </div>

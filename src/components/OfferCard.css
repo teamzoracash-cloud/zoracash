@@ -169,15 +169,24 @@
 .offer-card-rating {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-size: 13px;
     font-weight: 700;
     color: var(--text-primary);
 }
 
-.star-icon {
-    color: #F59E0B;
-    font-size: 13px;
+.star-rating-interactive {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.star-rating-interactive .star:hover {
+    transform: scale(1.2);
+}
+
+.star-rating-interactive .star:active {
+    transform: scale(0.9);
 }
 
 .rating-reviews {
