@@ -50,15 +50,15 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
     // Fetch ratings from Supabase
     const fetchRatings = async () => {
         try {
-            // Get total aggregate
+            // 1. Get ALL ratings for this offer to calculate average
             const { data: allRatings, error: fetchError } = await supabase
                 .from('ratings')
                 .select('rating')
                 .eq('offer_id', offer.id);
 
-            if (fetchError) throw fetchError;
-
-            if (allRatings) {
+            if (fetchError) {
+                console.warn('Supabase Fetch Error (Totals):', fetchError.message);
+            } else if (allRatings) {
                 const totalScore = allRatings.reduce((acc, curr) => acc + curr.rating, 0);
                 setCommunityStats({
                     totalScore,
@@ -66,17 +66,21 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
                 });
             }
 
-            // Get current user's rating
-            const { data: myRating, error: myError } = await supabase
+            // 2. Get current user's rating specifically
+            const { data: userData, error: myError } = await supabase
                 .from('ratings')
                 .select('rating')
                 .eq('offer_id', offer.id)
                 .eq('user_id', deviceId)
-                .single();
+                .maybeSingle(); // Better than .single() as it doesn't error on 0 rows
 
-            if (myRating) setUserRating(myRating.rating);
+            if (myError) {
+                console.warn('Supabase Fetch Error (User):', myError.message);
+            } else if (userData) {
+                setUserRating(userData.rating);
+            }
         } catch (err) {
-            console.error('Error fetching ratings:', err);
+            console.error('Unexpected error in fetchRatings:', err);
         }
     };
 
