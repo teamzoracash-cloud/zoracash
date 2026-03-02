@@ -175,24 +175,84 @@
     color: var(--text-primary);
 }
 
-.star-rating-interactive {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-}
-
-.star-rating-interactive .star:hover {
-    transform: scale(1.2);
-}
-
-.star-rating-interactive .star:active {
-    transform: scale(0.9);
+.star-icon {
+    color: #F59E0B;
 }
 
 .rating-reviews {
     color: var(--text-muted);
     font-weight: 500;
     font-size: 12px;
+}
+
+/* Community Rating Section */
+.community-rating-section {
+    padding-top: 16px;
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.community-rating-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.community-rating-label {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+}
+
+.community-rating-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.community-score-value {
+    font-size: 16px;
+    font-weight: 900;
+    color: #F59E0B;
+}
+
+.community-reviews-count {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.user-rate-box {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-rate-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.star-rating-interactive {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.star-rating-interactive .star:hover {
+    transform: scale(1.25);
+}
+
+.star-rating-interactive .star:active {
+    transform: scale(0.9);
 }
 
 /* The Reward Block */

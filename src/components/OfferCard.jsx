@@ -31,8 +31,25 @@ const categoryColors = {
 const MAX_FLAGS = 5;
 
 export default function OfferCard({ offer, featured = false, index = 0 }) {
-    const [rating, setRating] = useState(0);
+    const [userRating, setUserRating] = useState(0);
     const [hover, setHover] = useState(0);
+    // Real community stats (simulated with local state for now)
+    const [communityStats, setCommunityStats] = useState({
+        totalScore: 0,
+        count: 0
+    });
+
+    const handleRate = (value) => {
+        setUserRating(value);
+        setCommunityStats(prev => ({
+            totalScore: prev.totalScore + value,
+            count: prev.count + 1
+        }));
+    };
+
+    const communityAverage = communityStats.count > 0
+        ? (communityStats.totalScore / communityStats.count).toFixed(1)
+        : "0.0";
 
     const colorSet = categoryColors[offer.category] || categoryColors.finance;
     const extraCountries = offer.countries.length - MAX_FLAGS;
@@ -70,7 +87,7 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
             </div>
 
             <div className="offer-card-body">
-                {/* Header: Logo, Company & Rating */}
+                {/* Header: Logo, Company & Official Rating */}
                 <div className="offer-card-header">
                     <div className="offer-card-logo" style={{ borderColor: colorSet.border }}>
                         {offer.logo ? (
@@ -89,32 +106,9 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
                             )}
                         </div>
                         <div className="offer-card-rating">
-                            <div className="star-rating-interactive">
-                                {[...Array(5)].map((_, i) => {
-                                    const ratingValue = i + 1;
-                                    return (
-                                        <label key={i}>
-                                            <input
-                                                type="radio"
-                                                name="rating"
-                                                value={ratingValue}
-                                                onClick={() => setRating(ratingValue)}
-                                                style={{ display: 'none' }}
-                                            />
-                                            <FaStar
-                                                className="star"
-                                                color={ratingValue <= (hover || rating || offer.rating) ? "#F59E0B" : "rgba(255,255,255,0.1)"}
-                                                size={16}
-                                                onMouseEnter={() => setHover(ratingValue)}
-                                                onMouseLeave={() => setHover(0)}
-                                                style={{ cursor: 'pointer', transition: 'color 200ms, transform 200ms' }}
-                                            />
-                                        </label>
-                                    );
-                                })}
-                            </div>
-                            <span className="rating-score">{rating || offer.rating}</span>
-                            <span className="rating-reviews">({(offer.reviews / 1000).toFixed(1)}k reviews)</span>
+                            <span className="star-icon">★</span>
+                            <span className="rating-score">{offer.rating}</span>
+                            <span className="rating-reviews">({(offer.reviews / 1000).toFixed(1)}k official reviews)</span>
                         </div>
                     </div>
                 </div>
@@ -142,6 +136,44 @@ export default function OfferCard({ offer, featured = false, index = 0 }) {
                     {offer.tags.map((t) => (
                         <span key={t} className="offer-card-chip">{t}</span>
                     ))}
+                </div>
+
+                {/* REAL USER RATING SECTION */}
+                <div className="community-rating-section" style={{ borderTop: `1px solid ${colorSet.border}` }}>
+                    <div className="community-rating-header">
+                        <span className="community-rating-label">Community Score</span>
+                        <div className="community-rating-stats">
+                            <span className="community-score-value">{communityAverage}</span>
+                            <span className="community-reviews-count">({communityStats.count} users rated)</span>
+                        </div>
+                    </div>
+                    <div className="user-rate-box">
+                        <span className="user-rate-label">Rate this offer:</span>
+                        <div className="star-rating-interactive">
+                            {[...Array(5)].map((_, i) => {
+                                const ratingValue = i + 1;
+                                return (
+                                    <label key={i}>
+                                        <input
+                                            type="radio"
+                                            name="rating"
+                                            value={ratingValue}
+                                            onClick={() => handleRate(ratingValue)}
+                                            style={{ display: 'none' }}
+                                        />
+                                        <FaStar
+                                            className="star"
+                                            color={ratingValue <= (hover || userRating) ? "#F59E0B" : "rgba(255,255,255,0.1)"}
+                                            size={18}
+                                            onMouseEnter={() => setHover(ratingValue)}
+                                            onMouseLeave={() => setHover(0)}
+                                            style={{ cursor: 'pointer', transition: 'color 200ms, transform 200ms' }}
+                                        />
+                                    </label>
+                                );
+                            })}
+                        </div>
+                    </div>
                 </div>
 
                 {/* CTA */}
