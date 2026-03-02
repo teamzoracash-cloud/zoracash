@@ -15,10 +15,12 @@ export const categories = [
   { id: 'all', label: 'All Offers', icon: '🌟' },
   { id: 'finance', label: 'Finance', icon: '💳' },
   { id: 'crypto', label: 'Crypto', icon: '₿' },
+  /* 
   { id: 'shopping', label: 'Shopping', icon: '🛍️' },
   { id: 'travel', label: 'Travel', icon: '✈️' },
   { id: 'gaming', label: 'Gaming', icon: '🎮' },
   { id: 'food', label: 'Food', icon: '🍔' },
+  */
 ];
 
 export const offers = [
