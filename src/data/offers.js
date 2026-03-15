@@ -167,7 +167,7 @@ export const offers = [
   {
     id: 8,
     company: "SwissBorg",
-    logo: "https://cryptologos.cc/logos/swissborg-chsb-logo.png",
+    logo: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fa/f8/98/faf898b8-c28d-d30b-cde3-dd98c4b77268/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
     emoji: "🇨🇭",
     bonus: "50€",
     bonusNote: "Reward",
@@ -188,12 +188,12 @@ export const offers = [
   {
     id: 9,
     company: "Trade Republic",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/Trade_Republic_Bank_Logo.svg",
+    logo: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/14/83/31/14833156-f906-2cf3-98f4-602f7119a336/AppIcon-Production-0-1x_U007epad-0-1-85-220-0.png/512x512bb.jpg",
     emoji: "📈",
     bonus: "10€",
     bonusNote: "Reward",
     category: "finance",
-    description: "Create and verify account, deposit 100 euros.",
+    description: "Create and verify account, deposit 100€.",
     countries: ["🌍"],
     countryNames: ["Worldwide"],
     steps: 2,
