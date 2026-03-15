@@ -172,7 +172,7 @@ export const offers = [
     bonus: "50€",
     bonusNote: "Reward",
     category: "crypto",
-    description: "Create and verify account, exchange at least 100euros.",
+    description: "Create and verify account, exchange at least 100€.",
     countries: ["🌍"],
     countryNames: ["Worldwide"],
     steps: 2,
