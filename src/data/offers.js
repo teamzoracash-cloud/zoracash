@@ -163,5 +163,26 @@ export const offers = [
     isFeatured: true,
     tags: ["Crypto", "Futures", "Worldwide"],
     link: "https://bingx.com/act/general/3467356542?pAid=10010177&ref=3CLTPV"
+  },
+  {
+    id: 8,
+    company: "SwissBorg",
+    logo: "https://cdn.simpleicons.org/swissborg/01C38D",
+    emoji: "🇨🇭",
+    bonus: "50€",
+    bonusNote: "Reward",
+    category: "crypto",
+    description: "Create and verify account, exchange at least 100euros.",
+    countries: ["🌍"],
+    countryNames: ["Worldwide"],
+    steps: 2,
+    spots: null,
+    expiry: expiresOn(50),
+    rating: 4.8,
+    reviews: 12100,
+    isHot: true,
+    isFeatured: true,
+    tags: ["Crypto", "Bonus", "Worldwide"],
+    link: "https://swissborg.com/en/r/joseFRNJ5BZE"
   }
 ];
