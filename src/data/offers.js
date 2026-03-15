@@ -184,5 +184,26 @@ export const offers = [
     isFeatured: true,
     tags: ["Crypto", "Bonus", "Worldwide"],
     link: "https://swissborg.com/en/r/joseFRNJ5BZE"
+  },
+  {
+    id: 9,
+    company: "Trade Republic",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/42/Trade_Republic_Bank_Logo.svg",
+    emoji: "📈",
+    bonus: "10€",
+    bonusNote: "Reward",
+    category: "finance",
+    description: "Create and verify account, deposit 100 euros.",
+    countries: ["🌍"],
+    countryNames: ["Worldwide"],
+    steps: 2,
+    spots: null,
+    expiry: expiresOn(50),
+    rating: 4.9,
+    reviews: 32400,
+    isHot: true,
+    isFeatured: true,
+    tags: ["Finance", "Bonus", "Worldwide"],
+    link: "https://refnocode.trade.re/vxbllqn1"
   }
 ];
