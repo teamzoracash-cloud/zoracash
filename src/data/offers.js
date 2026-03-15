@@ -156,6 +156,7 @@ export const offers = [
     countryNames: ["Worldwide"],
     steps: 2,
     spots: null,
+    expiry: expiresOn(30),
     rating: 4.8,
     reviews: 15400,
     isHot: true,
