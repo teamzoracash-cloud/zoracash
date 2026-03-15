@@ -167,7 +167,7 @@ export const offers = [
   {
     id: 8,
     company: "SwissBorg",
-    logo: "https://cdn.simpleicons.org/swissborg/01C38D",
+    logo: "https://cryptologos.cc/logos/swissborg-chsb-logo.png",
     emoji: "🇨🇭",
     bonus: "50€",
     bonusNote: "Reward",
