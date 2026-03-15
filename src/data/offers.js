@@ -74,7 +74,7 @@ export const offers = [
     countryNames: ["Europe"],
     steps: 3,
     spots: null,
-    expiry: expiresOn(15),
+    expiry: expiresOn(35),
     rating: 4.8,
     reviews: 28500,
     isHot: true,
