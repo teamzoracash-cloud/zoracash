@@ -170,7 +170,7 @@ export const offers = [
     logo: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fa/f8/98/faf898b8-c28d-d30b-cde3-dd98c4b77268/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
     emoji: "🇨🇭",
     bonus: "50€",
-    bonusNote: "Reward",
+    bonusNote: "Up to Reward",
     category: "crypto",
     description: "Create and verify account, exchange at least 100€.",
     countries: ["🌍"],
