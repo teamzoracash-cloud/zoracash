@@ -37,8 +37,9 @@ export const offers = [
     isHot: true,
     isFeatured: true,
     tags: ["Crypto", "Bonus", "Worldwide"],
-    link: "https://www.kraken.com/"
+    link: "https://invite.kraken.com/JDNW/9m8boxjw"
   },
+  /*
   {
     id: 5,
     company: "OKX",
@@ -59,6 +60,7 @@ export const offers = [
     tags: ["Crypto", "Bonus", "Europe"],
     link: "https://my.okx.com/en-eu/join/30873897"
   },
+  */
   {
     id: 4,
     company: "Revolut",
@@ -72,13 +74,13 @@ export const offers = [
     countryNames: ["Europe"],
     steps: 3,
     spots: null,
-    expiry: "2026-03-10",
+    expiry: expiresOn(15),
     rating: 4.8,
     reviews: 28500,
     isHot: true,
     isFeatured: true,
     tags: ["Finance", "Bonus", "Europe"],
-    link: "https://revolut.com/referral/?referral-code=josp7epe!FEB2-26-AR-L2&geo-redirect"
+    link: "https://revolut.com/referral/?referral-code=josp7epe!MAR1-26-AR-L2&geo-redirect"
   },
   {
     id: 2,
