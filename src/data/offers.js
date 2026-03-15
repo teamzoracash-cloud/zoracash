@@ -142,5 +142,25 @@ export const offers = [
     isFeatured: true,
     tags: ["Crypto", "Bonus", "Worldwide"],
     link: "https://coinbase.com/join/D8SQRTE?src=ios-link"
+  },
+  {
+    id: 7,
+    company: "BingX",
+    logo: "https://bingx.com/favicon.ico",
+    emoji: "📈",
+    bonus: "$200",
+    bonusNote: "In futures voucher and USDT",
+    category: "crypto",
+    description: "Create and verify account, make 1000$ on trading volume (Can be done with 10$ x100 leverage, 100$ x10 leverage...).",
+    countries: ["🌍"],
+    countryNames: ["Worldwide"],
+    steps: 2,
+    spots: null,
+    rating: 4.8,
+    reviews: 15400,
+    isHot: true,
+    isFeatured: true,
+    tags: ["Crypto", "Futures", "Worldwide"],
+    link: "https://bingx.com/act/general/3467356542?pAid=10010177&ref=3CLTPV"
   }
 ];
